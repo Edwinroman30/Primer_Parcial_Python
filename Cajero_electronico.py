@@ -15,7 +15,7 @@ print('Cajero  Automatico.net')
 print('(1) FDP Bank \n(2) Any Bank')
 option_bank = int(input())
 
-monto_cuenta = input('Dígite el monto a solicitar')
+monto_cuenta = int(input('Dígite el monto a solicitar: '))
 
 if(monto_cuenta == 0 or monto_cuenta < 100):
     print('Sea conciente, debe retirar 50 en adelante.')
@@ -31,19 +31,17 @@ else:
                     miles[0] = miles[0] - (miles[2]*(monto_cuenta/miles[2]))
                     miles[1] = miles[1] - (monto_cuenta/miles[2])
                 else:
-                    if(monto_cuenta/docientos[2] > monto_cuenta/quinientos[2] ):
+                    if(monto_cuenta/docientos[2] > monto_cuenta/quinientos[2]):
                         #PROCEDER CON 500
                         estado_monto = monto_cuenta - (quinientos[2]*(monto_cuenta/quinientos[2]))
                         quinientos[0] = quinientos[0] - (quinientos[2]*(monto_cuenta/quinientos[2]))
                         quinientos[1] = quinientos[1] - (monto_cuenta/quinientos[2])
-                    else:
-                       
-                       if(monto_cuenta/docientos[2] < monto_cuenta/cien[2]):
+                    elif(monto_cuenta/docientos[2] < monto_cuenta/cien[2]):
                            #PROCEDER CON 200
                             estado_monto = monto_cuenta - (docientos[2]*(monto_cuenta/docientos[2]))
                             docientos[0] = docientos[0] - (docientos[2]*(monto_cuenta/docientos[2]))
                             docientos[1] = docientos[1] - (monto_cuenta/docientos[2])
-                        else:
+                    else:
                              #PROCEDER CON 100
                              estado_monto = monto_cuenta - (cien[2]*(monto_cuenta/cien[2]))
                              cien[0] = cien[0] - (cien[2]*(monto_cuenta/cien[2]))
@@ -53,3 +51,8 @@ else:
     else:
         print('No existe esta opción :(')
 
+print('Estado monto {}'.format(estado_monto))
+print('Billetes de miles {}'.format(miles[1]))
+print('Billetes de quiniento {}'.format(quinientos[1]))
+print('Billetes de dociento{}'.format(docientos[1]))
+print('Billetes de cien{}'.format(cien[1]))
