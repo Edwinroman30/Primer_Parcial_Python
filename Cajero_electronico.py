@@ -24,19 +24,20 @@ else:
         if(monto_cuenta > 20000):
             print('Lo sentimos usted no puede solicitar mas de 20000 pesos.')
         else:
+            estado_monto = monto_cuenta
             while(estado_monto != 0):
-                if(monto_cuenta/miles[2] < monto_cuenta/quinientos[2] and miles[1] != 0 ):
+                if((monto_cuenta%miles[2] == 0)  and miles[1] != 0 ):
                     #PROCEDER CON MIL               
                     estado_monto = monto_cuenta - (miles[2]*(monto_cuenta/miles[2]))
                     miles[0] = miles[0] - (miles[2]*(monto_cuenta/miles[2]))
                     miles[1] = miles[1] - (monto_cuenta/miles[2])
                 else:
-                    if(monto_cuenta/docientos[2] > monto_cuenta/quinientos[2]):
+                    if(monto_cuenta%quinientos[2] == 0):
                         #PROCEDER CON 500
                         estado_monto = monto_cuenta - (quinientos[2]*(monto_cuenta/quinientos[2]))
                         quinientos[0] = quinientos[0] - (quinientos[2]*(monto_cuenta/quinientos[2]))
                         quinientos[1] = quinientos[1] - (monto_cuenta/quinientos[2])
-                    elif(monto_cuenta/docientos[2] < monto_cuenta/cien[2]):
+                    elif(monto_cuenta%docientos[2] == 0):
                            #PROCEDER CON 200
                             estado_monto = monto_cuenta - (docientos[2]*(monto_cuenta/docientos[2]))
                             docientos[0] = docientos[0] - (docientos[2]*(monto_cuenta/docientos[2]))
@@ -51,8 +52,8 @@ else:
     else:
         print('No existe esta opción :(')
 
-print('Estado monto {}'.format(estado_monto))
-print('Billetes de miles {}'.format(miles[1]))
-print('Billetes de quiniento {}'.format(quinientos[1]))
-print('Billetes de dociento{}'.format(docientos[1]))
-print('Billetes de cien{}'.format(cien[1]))
+print('Estado monto {} '.format(estado_monto))
+print('Billetes de miles {} '.format(miles[1]))
+print('Billetes de quiniento {0} , {1} '.format(quinientos[1],quinientos[0]))
+print('Billetes de dociento {} '.format(docientos[1]))
+print('Billetes de cien {} '.format(cien[1]))
